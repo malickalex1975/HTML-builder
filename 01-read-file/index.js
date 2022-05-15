@@ -7,4 +7,3 @@ fs.readFile(path.join(__dirname,  'text.txt'), 'utf-8',
     stdout.write(data);
   }
 );
-
