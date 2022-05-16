@@ -1,12 +1,7 @@
 const {stdout} = process;
 const fs = require('fs');
 const path = require('path');
-let checkingPath = path.join(__dirname, 'secret-folder');
-let file;
-let filePath= checkingPath;
-let fileName;
-let fileExt;
-let fileSize;
+const checkingPath = path.join(__dirname, 'secret-folder');
 
 function checkFiles(checkingPath){
   fs.readdir(checkingPath,{withFileTypes:true}, (err,dirents) => {
@@ -14,11 +9,11 @@ function checkFiles(checkingPath){
     for (let dirent of dirents){
       if (dirent.isFile()){
         fs.stat(path.join(checkingPath,dirent.name.toString()), (err,stats) => {
-          filePath =path.join(checkingPath,dirent.name.toString());
-          file = path.parse(filePath);
-          fileName=file.name;
-          fileExt = file.ext;
-          fileSize = stats.size;
+          let filePath =path.join(checkingPath,dirent.name.toString());
+          let file = path.parse(filePath);
+          let fileName=file.name;
+          let fileExt = file.ext;
+          let fileSize = stats.size;
           stdout.write(`${fileName} - ${fileExt.slice(1)} - ${fileSize} bytes; \n`);
         });
       }

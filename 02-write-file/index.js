@@ -12,15 +12,12 @@ fs.access(
     if (err) {
       fs.open(
         path.join(__dirname, 'text.txt'), 'a+', err => {
-          if (err) {
-            stdout.write(err);
-
-          }
+          if (err) throw err;
         });
     }
   });
 
-stdout.write('\nHello, input your message, please: \n>>> ');
+stdout.write('\nHello, input your message, please: \n> ');
 stdin.on('data', (data) => {
   message = data.toString();
   if (message === 'exit\r\n') {
@@ -30,6 +27,6 @@ stdin.on('data', (data) => {
       path.join(__dirname, 'text.txt'), message, err => {
         if (err) throw err;
       });
-    stdout.write('\nHello, input your message, please: \n>>> ');
+    stdout.write('\nHello, input your message, please: \n> ');
   }
 });
