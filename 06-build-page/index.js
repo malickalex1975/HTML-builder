@@ -9,8 +9,7 @@ let styleData ='';
 
 async function createDir(){
   try{
-    await fsPromises.access(destination);
-    await fsPromises.rm(destination, {recursive:true}, {force:true});
+    await fsPromises.rm(destination, {recursive:true});
     await fsPromises.mkdir(destination, {recursive:true});
   }
   catch{
@@ -32,7 +31,7 @@ async function mergeStyles(){
       let fileExt = file.ext;
       if (fileExt ==='.css'){
         const data  = await fsPromises.readFile(filePath, 'utf-8');
-        styleData = styleData+data+'\n';
+        styleData = styleData+data.trim() +'\n';
       }
     }
   }

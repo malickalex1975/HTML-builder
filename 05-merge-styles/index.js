@@ -2,7 +2,7 @@ const path = require('path');
 const fsPromises = require('fs/promises');
 const checkingPath = path.join(__dirname, 'styles');
 const destination = path.join(__dirname, 'project-dist', 'bundle.css');
-let allData;
+let allData ='';
 
 async function mergeStyles(){
   await fsPromises.open(destination,'w');

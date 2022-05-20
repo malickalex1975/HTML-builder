@@ -27,6 +27,6 @@ stdin.on('data', (data) => {
       path.join(__dirname, 'text.txt'), message, err => {
         if (err) throw err;
       });
-    stdout.write('\nHello, input your message, please: \n> ');
+    stdout.write('\nAdd something else, please or enter "exit" or press CTRL+C to quit: \n> ');
   }
 });

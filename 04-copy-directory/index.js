@@ -6,9 +6,9 @@ const destination = path.join(__dirname, 'files-copy');
 //    копирует не только файлы но и папки со вложенными файлами
 async function copyDir( s = source,  d = destination){
   try{
-    await fsPromises.access(d);
-    await fsPromises.rm(d, {recursive:true}, {force:true});
+    await fsPromises.rm(d, {recursive:true});
     await fsPromises.mkdir(d, {recursive:true});
+   
   }
   catch{
     await fsPromises.mkdir(d, {recursive:true});
